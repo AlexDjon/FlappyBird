@@ -1,0 +1,24 @@
+/* -- RESET -- */
+@font-face {
+  font-family: 'Pixel';
+  src: url('../fonts/Pixel.ttf');
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/OpenSans-Light.ttf');
+}
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans';
+}
+
+body {
+  background-color: var(--black);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}

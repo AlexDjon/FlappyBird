@@ -1,0 +1,99 @@
+/* STYLE BODY */
+:root {
+  --pink: #EBBAB9;
+  --pink-dark: #f45d69;
+  --red: #b92121;
+  --red-dark: #5A0001;
+  --yellow: #FF9800;
+  --white: #F7F7F7;
+  --black: #181414;
+  --grey: #252424;
+  --black-off: rgba(0,0,0,0.3);
+  --black-on: rgba(14, 14, 14, 0.3);
+  --blue: #3d65d3;
+  --blue-dark: #2147b1;
+  
+  --shadow: 0 0 14px 0 rgba(0, 0, 0, 0.205);
+}
+
+.title {
+  color: var(--white);
+  margin-top: 30px;
+  font-size: 35px;
+  font-family: 'Pixel';
+}
+
+.flappy {
+  position: relative;
+  border: 4px solid var(--red-dark);
+  width: 800px;
+  height: 480px;
+  margin-top: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-image: url('../img/hell.jpg');
+  background-size: cover;
+}
+.passaro {
+  position: absolute;
+  width: 60px;
+  left: calc(50% - 30px);
+  bottom: 50%;
+}
+
+.par-de-barreiras {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.barreira {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barreira .borda {
+  height: 30px;
+  width: 100px;
+}
+.barreira .corpo {
+  height: 130px;
+  width: 80px;
+  border-width: 0 3px;
+}
+.barreira .inferno {
+  background: linear-gradient(90deg, var(--red-dark), var(--red));
+  border: solid 3px var(--red-dark);
+  border-left-color: var(--white);
+}
+/* .barreira .ceu {
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+  border: solid 3px var(--blue-dark);
+  border-left-color: var(--white);
+} */
+.progresso {
+  z-index: 100;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-family: 'Pixel';
+  font-size: 30px;
+  color: var(--white);
+}
+.reload {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: var(--red-dark);
+  margin-top: 25px;
+  cursor: pointer;
+  border: solid 1px var(--red);
+}
+.reload i {  
+  line-height: 40px;
+  color: var(--white);
+}

@@ -1,2 +1,2 @@
 # FlappyBird
-FlappyBird in JavaScript
+FlappyBird com JavaScript Básico
