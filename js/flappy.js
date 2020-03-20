@@ -88,7 +88,7 @@ function Passaro(alturaJogo) {
 
   this.animar = () => {
     const up = window.innerWidth < 800 ? 5 : 6
-    const down = -5
+    const down = window.innerWidth < 800 ? -4.3 : -5
     const novoY = this.getY() + (voando ? up : down)
     const alturaMaxima = alturaJogo - this.elemento.clientHeight
 
@@ -138,10 +138,39 @@ function colidiu(passaro, barreiras) {
   return colidiu
 }
 
+function Final(pontos, flappy) {
+  const buttonReload = novoElemento('button', 'reload')
+  const reload = () => location.reload()
+  buttonReload.onclick = reload
+  buttonReload.ontouchstart = reload
+  const buttonIcon = novoElemento('i','material-icons')
+  buttonIcon.innerHTML = 'cached'
+  
+  buttonReload.appendChild(buttonIcon)
+
+  const mensagem = novoElemento('div','mensagem')
+  let mensagemAviso = ''
+  if(pontos < 10) {
+    mensagemAviso = `${pontos}... Só isso KKK`
+  } else if(pontos <= 20) {
+    mensagemAviso = `${pontos}... Ta melhorando!`
+  } else if(pontos <= 40) {
+    mensagemAviso = `${pontos}... Boaaaa`
+  } else {
+    mensagemAviso = `${pontos}... DEUUSSS`
+  }
+
+  mensagem.innerText = mensagemAviso
+
+  mensagem.appendChild(buttonReload)
+  flappy.appendChild(mensagem)
+}
+
 function FlappyBird() {
   let pontos = 0
 
   const areaDoJogo = document.querySelector('.flappy')
+  areaDoJogo.removeChild(areaDoJogo.childNodes[1])
   const altura = areaDoJogo.clientHeight
   const largura = areaDoJogo.clientWidth
   const espacamento = window.innerWidth < 800 ? 180 : 210
@@ -163,11 +192,13 @@ function FlappyBird() {
       passaro.animar()
 
       if(colidiu(passaro, barreiras)) {
+        Final(pontos, areaDoJogo)
         clearInterval(temporizador)
       }
     }, 20)
   }
 }
+
 
 setTimeout(() => {
   new FlappyBird().start()

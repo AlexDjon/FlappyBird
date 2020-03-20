@@ -9,7 +9,7 @@
   --black: #181414;
   --grey: #252424;
   --black-off: rgba(0,0,0,0.3);
-  --black-on: rgba(14, 14, 14, 0.3);
+  --black-on: rgba(48, 48, 48, 0.3);
   --blue: #3d65d3;
   --blue-dark: #2147b1;
   
@@ -78,23 +78,36 @@
   position: absolute;
   top: 10px;
   right: 20px;
-  font-family: 'Pixel';
   font-size: 30px;
   color: var(--white);
   user-select: none;
 }
 .reload {
-  height: 45px;
-  width: 45px;
+  margin-top: 15px;
+  padding: 10px;
   border-radius: 50%;
-  background-color: var(--red-dark);
-  margin-top: 25px;
+  background-color: var(--black-on);
+  color: var(--yellow);
   cursor: pointer;
-  border: solid 1px var(--red);
+  border: 0;
 }
-.reload i {  
-  line-height: 40px;
+.reload i {
+  font-size: 40px;
+}
+.mensagem {
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-off);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   color: var(--white);
+  font-size: 32px;
+  z-index: 101;
+  position: absolute;
+  user-select: none;
 }
 
 @media (max-width: 800px) {
@@ -104,6 +117,10 @@
     margin-top: 24px;
   }
   .passaro {
+    width: 40px;
     left: calc(30% - 30px);
+  }
+  .mensagem {
+    font-size: 28px;
   }
 }
