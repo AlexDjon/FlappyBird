@@ -48,7 +48,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     new ParDeBareiras(altura, abertura, largura + espaco * 3),
   ]
 
-  let deslocamento = 3
+  let deslocamento = 5
   this.animar = () => {
     this.pares.forEach(par => {
       par.setX(par.getX() - deslocamento)
@@ -80,10 +80,14 @@ function Passaro(alturaJogo) {
   this.setY = y => this.elemento.style.bottom = `${y}px`
 
   window.onkeydown = e => voando = true
+  window.ontouchstart = e => voando = true
+  window.onmousedown = e => voando = true
   window.onkeyup = e => voando = false
+  window.ontouchend = e => voando = false
+  window.onmouseup = e => voando = false
 
   this.animar = () => {
-    const novoY = this.getY() + (voando ? 8 : -5)
+    const novoY = this.getY() + (voando ? 6 : -5)
     const alturaMaxima = alturaJogo - this.elemento.clientHeight
 
     if(novoY <= 0) {
@@ -138,9 +142,10 @@ function FlappyBird() {
   const areaDoJogo = document.querySelector('.flappy')
   const altura = areaDoJogo.clientHeight
   const largura = areaDoJogo.clientWidth
+  const espacamento = window.innerWidth < 800 ? 180 : 210
 
   const progresso = new Progresso
-  const barreiras = new Barreiras(altura, largura, 210, 320,
+  const barreiras = new Barreiras(altura, largura, espacamento, 320,
     () => progresso.atualizarPontos(++pontos))
   
   const passaro = new Passaro(altura)
@@ -162,7 +167,9 @@ function FlappyBird() {
   }
 }
 
-new FlappyBird().start()
+setTimeout(() => {
+  new FlappyBird().start()
+}, 1500)
 
 // const barreiras = new Barreiras(480, 800, 200, 320)
 // const passaro = new Passaro(480)
